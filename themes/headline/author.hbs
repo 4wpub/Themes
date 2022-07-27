@@ -18,6 +18,19 @@
                     {{#if bio}}
                         <div class="gh-author-bio gh-pagehead-description">{{bio}}</div>
                     {{/if}}
+
+                    <div class="author-profile-meta">
+                        {{#if website}}
+                            <a class="author-profile-social-link" href="{{website}}" target="_blank" rel="noopener">{{website}}</a>
+                        {{/if}}
+                        {{#if twitter}}
+                            <a class="author-profile-social-link" href="{{twitter_url}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+                        {{/if}}
+                        {{#if facebook}}
+                            <a class="author-profile-social-link" href="{{facebook_url}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
+                        {{/if}}
+                    </div>
+
                 </div>
             </section>
         {{/author}}
