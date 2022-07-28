@@ -33,47 +33,11 @@
                 {{/foreach}}
             {{/get}}
 
-            {{#if @custom.enter_tag_slugs_for_secondary_sections}}
-                {{#get "tags" filter="slug:[{{@custom.enter_tag_slugs_for_secondary_sections}}]"}}
-                    {{#if tags}}
-                        <div class="gh-topic-list">
-                            {{#foreach tags}}
-                                {{> "topic-minimal"}}
-                            {{/foreach}}
-                        </div>
-                    {{/if}}
-                {{/get}}
-            {{/if}}
-        {{else}}
-            {{#match posts.length ">" 1}}
-                {{#get "tags" include="count.posts" order="count.posts desc" limit="3"}}
-                    {{#foreach tags}}
-                        {{> "topic-grid"}}
-                    {{/foreach}}
-                {{/get}}
-                
-                {{#get "tags" include="count.posts" order="count.posts desc"}}
-                    {{#if tags.[3]}}
-                        <div class="gh-topic-list">
-                            {{#foreach tags from="4" limit="3"}}
-                                {{> "topic-minimal"}}
-                            {{/foreach}}
-                        </div>
-                    {{/if}}
-                {{/get}}
-            {{/match}}
-            
-        {{/if}}
-        <footer class="gh-topic-footer"></footer>
-
-
-        <section class="home-author-section">
-            <h2 class="gh-topic-name">
-                Meet Our Top Writers and Columnists
-            </h2>
-            <div id="home-authors">
-            {{#get 'authors' limit='all' filter='slug:[phyllis, jobartosch, mk, danavitalosova]' include='count.posts' order='count.posts desc'}}
-                {{#foreach authors as | author|}}
+            <section class="home-author-section">
+                <h2 class="gh-topic-name">Meet Our Top Writers and Columnists</h2>
+                <div id="home-authors">
+                {{#get 'authors' limit='all' filter='slug:[phyllis, jobartosch, mk, danavitalosova, andreia, roisin]' include='count.posts' order='count.posts desc'}}
+                    {{#foreach authors as | author|}}
                     {{#author}}
                         <section class="gh-pagehead author-card">
                             <figure class="gh-author-image">
@@ -106,9 +70,44 @@
                             </div>
                         </section>
                     {{/author}}
-                {{/foreach}}
-            {{/get}}
-            </div>
-        </section>
+                    {{/foreach}}
+                {{/get}}
+                </div>
+                <footer class="gh-topic-footer"></footer>
+            </section>
+
+            {{#if @custom.enter_tag_slugs_for_secondary_sections}}
+            <h2 class="gh-topic-name secondary">More Feminist News From Around the World</h2>
+                {{#get "tags" filter="slug:[{{@custom.enter_tag_slugs_for_secondary_sections}}]"}}
+                    {{#if tags}}
+                        <div class="gh-topic-list">
+                            {{#foreach tags}}
+                                {{> "topic-minimal"}}
+                            {{/foreach}}
+                        </div>
+                    {{/if}}
+                {{/get}}
+            {{/if}}
+        {{else}}
+            {{#match posts.length ">" 1}}
+                {{#get "tags" include="count.posts" order="count.posts desc" limit="3"}}
+                    {{#foreach tags}}
+                        {{> "topic-grid"}}
+                    {{/foreach}}
+                {{/get}}
+                
+                {{#get "tags" include="count.posts" order="count.posts desc"}}
+                    {{#if tags.[3]}}
+                        <div class="gh-topic-list">
+                            {{#foreach tags from="4" limit="3"}}
+                                {{> "topic-minimal"}}
+                            {{/foreach}}
+                        </div>
+                    {{/if}}
+                {{/get}}
+            {{/match}}
+            
+        {{/if}}
+        
     </div>
 </main>
