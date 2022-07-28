@@ -16,15 +16,15 @@
         {{/if}}
 
         <div class="gh-card-wrapper">
+            
+
             <header class="gh-card-header">
                 <h3 class="gh-card-title">{{title}}</h3>
             </header>
 
             {{#if excerpt}}
                 {{#is "home"}}
-                    {{#has index="0"}}
-                        <div class="gh-card-excerpt">{{excerpt}}</div>
-                    {{/has}}
+                    <div class="gh-card-excerpt">{{excerpt}}</div>
                 {{else}}
                     <div class="gh-card-excerpt">{{excerpt}}</div>
                 {{/is}}
@@ -35,6 +35,7 @@
                 <span class="gh-card-footer-sep"></span>
                 <time class="gh-card-date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
             </footer>
+            
         </div>
     </a>
 </article>
