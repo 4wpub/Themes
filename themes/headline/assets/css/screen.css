@@ -240,6 +240,39 @@ body:not(.home-template) .gh-topic-grid .gh-card {
     border-radius: 50%;
 }
 
+#home-authors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.home-author-section h2 {
+    margin-top: 24px;
+    margin-bottom: 32px;
+}
+
+#home-authors .gh-pagehead.author-card {
+    flex-direction: row;
+    width: 46%;
+    margin: 12px 12px 32px 0;
+    min-width: 460px;
+}
+
+#home-authors .gh-pagehead-content {
+    width: 85%;
+    margin-left: 12px;
+}
+
+#home-authors a.gh-topic-link {
+    float: right;
+    margin-right: 48px;
+    color: var(--color-secondary-text);
+}
+
+#home-authors a.gh-topic-link:hover {
+    color: var(--ghost-accent-color);
+}
+
 /* Styles specific to list style sections */
 
 .gh-topic-list {
@@ -867,3 +900,4 @@ body:not(.home-template) .gh-topic-grid .gh-card {
         line-height: 1;
     }
 }
+

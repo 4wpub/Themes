@@ -26,50 +26,6 @@
             </footer>
         </section>
 
-        <section>
-            <h2 class="gh-topic-name">
-                Meet Our Top Writers and Columnists
-            </h2>
-            {{#get 'authors' limit='all' filter='slug:[phyllis, jobartosch, mk, danavitalosova]' include='count.posts' order='count.posts desc'}}
-                {{#foreach authors as | author|}}
-                    {{#author}}
-                        <section class="gh-pagehead">
-                            <figure class="gh-author-image">
-                                {{#if profile_image}}
-                                    <img src="{{profile_image}}" alt="{{name}}">
-                                {{else}}
-                                    <div class="gh-author-icon">{{> icons/avatar}}</div>
-                                {{/if}}
-                            </figure>
-
-                            <div class="gh-pagehead-content">
-                                <h1 class="gh-pagehead-title">{{name}}</h1>
-
-                                {{#if bio}}
-                                    <div class="gh-author-bio gh-pagehead-description">{{bio}}</div>
-                                {{/if}}
-
-                                <div class="author-profile-meta">
-                                    {{#if website}}
-                                        <a class="author-profile-social-link" href="{{website}}" target="_blank" rel="noopener">{{website}}</a>
-                                    {{/if}}
-                                    {{#if twitter}}
-                                        <a class="author-profile-social-link" href="{{twitter_url}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
-                                    {{/if}}
-                                    {{#if facebook}}
-                                        <a class="author-profile-social-link" href="{{facebook_url}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
-                                    {{/if}}
-                                </div>
-
-                            </div>
-                        </section>
-                    {{/author}}
-                {{/foreach}}
-            {{/get}}
-            <footer class="gh-topic-footer">
-            </footer>
-        </section>
-
         {{#if @custom.enter_tag_slugs_for_primary_sections}}
             {{#get "tags" filter="slug:[{{@custom.enter_tag_slugs_for_primary_sections}}]"}}
                 {{#foreach tags}}
@@ -106,6 +62,53 @@
                     {{/if}}
                 {{/get}}
             {{/match}}
+            
         {{/if}}
+        <footer class="gh-topic-footer"></footer>
+
+
+        <section class="home-author-section">
+            <h2 class="gh-topic-name">
+                Meet Our Top Writers and Columnists
+            </h2>
+            <div id="home-authors">
+            {{#get 'authors' limit='all' filter='slug:[phyllis, jobartosch, mk, danavitalosova]' include='count.posts' order='count.posts desc'}}
+                {{#foreach authors as | author|}}
+                    {{#author}}
+                        <section class="gh-pagehead author-card">
+                            <figure class="gh-author-image">
+                                {{#if profile_image}}
+                                    <img src="{{profile_image}}" alt="{{name}}">
+                                {{else}}
+                                    <div class="gh-author-icon">{{> icons/avatar}}</div>
+                                {{/if}}
+                            </figure>
+
+                            <div class="gh-pagehead-content">
+                                <h1 class="gh-pagehead-title">{{name}}</h1>
+
+                                {{#if bio}}
+                                    <div class="gh-author-bio gh-pagehead-description">{{bio}}</div>
+                                {{/if}}
+
+                                <div class="author-profile-meta">
+                                    {{#if twitter}}
+                                        <a class="author-profile-social-link" href="{{twitter_url}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+                                    {{/if}}
+                                    {{#if facebook}}
+                                        <a class="author-profile-social-link" href="{{facebook_url}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
+                                    {{/if}}
+                                    {{#if website}}
+                                        <a class="author-profile-social-link" href="{{website}}" target="_blank" rel="noopener">{{website}}</a>
+                                    {{/if}}
+                                </div>
+                                <a class="gh-topic-link" href="{{url}}">Read Articles {{> "icons/arrow"}}</a>
+                            </div>
+                        </section>
+                    {{/author}}
+                {{/foreach}}
+            {{/get}}
+            </div>
+        </section>
     </div>
 </main>
