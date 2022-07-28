@@ -1,0 +1,60 @@
+{{#if @labs.members}}
+
+  <style>
+  .reactions-wrap { 
+    background: #f8f8f8; padding: 20px 0; border-radius: 5px; 
+  }
+
+  .gh-pagehead.comments {
+    margin-left: -40px;
+    margin-bottom: 0;
+  }
+
+  #cove {
+    margin-top: 20px;
+  }
+  </style>
+
+  <!-- <div class="reactions-wrap">
+  <h2>{{#if @member}}What did you think?{{else}}Member reactions{{/if}}</h2>
+  <div id="cove-reactions">Reactions are loading...</div>
+  {{^if @member}}<p><a href="#/portal/signin">Sign in</a> to leave reactions on posts</p>{{/if}}
+  </div> -->
+
+  {{!-- <h2><span id="cove-count"></span> Comments</h2> --}}
+<div class="gh-read-next gh-canvas">
+  <section class="gh-pagehead comments">
+      <h4 class="gh-pagehead-title">Comments</h4>
+  </section>
+</div>
+
+  <div id="cove"></div>
+
+  {{#if @member}}
+    <p>Signed in as {{@member.email}} · <a href="javascript:" data-members-signout>Sign out</a></p>
+
+  {{else}}
+    <p>Enter your email below to sign in or become a <em>4W</em> member and join the conversation.<br><em>(Already did this? Try refreshing the page!)</em></p>
+    <form data-members-form="signin" id="cove-login">
+      <input class="cove-input" data-members-email type="email" required="true" placeholder="your@email.com" />
+      <button type="submit" class="cove-button">
+        <span class="button-text">Send a log in link</span>
+        <span class="button-spinner" style="display:none"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" display="block"><circle cx="50" cy="50" fill="none" stroke="#fff" stroke-width="12" r="39" stroke-dasharray="183.7831702350029 63.261056745000964" transform="rotate(197.992 50 50)"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"/></circle></svg></span>
+      </button>
+      <span class="signin-success" style="display:none">Great! Please check your inbox (or spam folder) for a log in link.</span>
+      <span class="signin-error" style="display:none">Something didn't work. Please try again.</span>
+    </form>
+  {{/if}}
+
+  <script>
+  const Cove = {
+    publication: "335d5d222ee25c7ecb54f1a5e667f332",
+    contentId: "{{id}}",
+    memberId: "{{@member.uuid}}",
+    memberEmail: "{{@member.email}}",
+    requirePaid: false,
+    isPaid: "{{@member.paid}}",
+    memberName: "{{@member.firstname}}"
+  }
+  </script>
+{{/if}}
