@@ -42,8 +42,13 @@
                     {{#unless @member}}
                         <a class="gh-head-btn gh-btn gh-primary-btn" href="#/portal/signup" data-portal="signup">Subscribe</a>
                     {{else}}
-                        <a class="gh-head-btn gh-btn" href="#/portal/account" data-portal="account">Account</a>
+                        {{#if @member.paid}}
+                            <a class="gh-head-btn gh-btn" href="#/portal/account" data-portal="account">Account</a>
+                        {{else}}
+                            <a class="gh-head-btn gh-btn gh-primary-btn" href="#/portal/account" data-portal="account">Donate</a>
+                        {{/if}}
                     {{/unless}}
+                    
                 </div>
             </div>
         </header>
